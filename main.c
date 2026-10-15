@@ -1,18 +1,18 @@
 #include <stdio.h>
-void f(void);
+void sub(void);
 
-int i;
 int main(void){
-    for(i=0;i<5;i++){
-        f();
-    }
+    int i;
+    for(i=0;i<3;i++)
+        sub();
     return 0;
 }
-void f(void){
-    for(i=0;i<10;i++){
-        printf("#");
-    }
+
+void sub(void){
+    int auto_count=0;
+    static int static_count=0;
+    auto_count++;
+    static_count++;
+    printf("auto_count=%d\n",auto_count);
+    printf("static_count=%d\n",static_count);
 }
-//반복문 변수는 지역변수가 나음
-//f를 실행하면서 i가 10이 됐던 게 남아 있어서 main 함수에서는 한 번밖에 못하는 것
-//수정은 당연히 i를 지역변수로
